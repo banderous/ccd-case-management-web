@@ -97,7 +97,7 @@ export class WorkbasketFiltersComponent implements OnInit {
 
   onJurisdictionIdChange() {
     this.jurisdictionService.announceSelectedJurisdiction(this.selected.jurisdiction);
-    this.definitionsService.getCaseTypes(this.selected.jurisdiction.id, READ_ACCESS)
+    this.definitionsService.getCaseTypes(this.selected.jurisdiction.description, this.selected.jurisdiction.id, READ_ACCESS)
     .subscribe(caseTypes => {
       this.selectedJurisdictionCaseTypes = caseTypes.length > 0 ? caseTypes : null;
       this.selected.caseType = this.selectedJurisdictionCaseTypes ? this.selectedJurisdictionCaseTypes[0] : null;
@@ -149,7 +149,7 @@ export class WorkbasketFiltersComponent implements OnInit {
     let selectedJurisdictionId = routeSnapshot.queryParams[WorkbasketFiltersComponent.PARAM_JURISDICTION] || this.defaults.jurisdiction_id;
     this.selected.jurisdiction = this.jurisdictions.find(j => selectedJurisdictionId === j.id);
 
-    this.definitionsService.getCaseTypes(selectedJurisdictionId, READ_ACCESS)
+    this.definitionsService.getCaseTypes(this.selected.jurisdiction.description, selectedJurisdictionId, READ_ACCESS)
     .subscribe(caseTypes => {
       this.selectedJurisdictionCaseTypes = caseTypes.length > 0 ? caseTypes : null;
       if (this.selectedJurisdictionCaseTypes) {

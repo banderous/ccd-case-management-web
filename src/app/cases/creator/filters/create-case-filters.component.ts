@@ -63,7 +63,7 @@ export class CreateCaseFiltersComponent implements OnInit {
     if (this.filterJurisdictionControl.value !== '') {
       this.formGroup.controls['caseType'].enable();
       this.selected.jurisdiction = this.findJurisdiction(this.jurisdictions, this.filterJurisdictionControl.value);
-      this.definitionsService.getCaseTypes(this.selected.jurisdiction.id, CREATE_ACCESS)
+      this.definitionsService.getCaseTypes(this.selected.jurisdiction.description, this.selected.jurisdiction.id, CREATE_ACCESS)
           .subscribe(caseTypes => {
             this.selectedJurisdictionCaseTypes = caseTypes;
             this.selectCaseType(this.selectedJurisdictionCaseTypes, this.filterCaseTypeControl);

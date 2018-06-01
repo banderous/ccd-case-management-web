@@ -9,7 +9,13 @@ export class DefinitionsService {
 
   constructor(private http: HttpService, private appConfig: AppConfig) {}
 
-  getCaseTypes(jurisdictionId: string, access: string): Observable<CaseType[]> {
+  getCaseTypes(apiUrl: string, jurisdictionId: string, access: string): Observable<CaseType[]> {
+
+    // hacky, hack hack
+    this.appConfig.setApiUrl(apiUrl);
+
+    console.log('URL: ' + apiUrl);
+
     const url = this.appConfig.getApiUrl()
       + `/caseworkers/:uid`
       + `/jurisdictions/${jurisdictionId}`

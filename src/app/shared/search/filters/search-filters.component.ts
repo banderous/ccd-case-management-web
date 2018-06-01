@@ -76,7 +76,7 @@ export class SearchFiltersComponent implements OnInit {
   onJurisdictionIdChange(): void {
     this.selected.caseType = null;
     this.jurisdictionService.announceSelectedJurisdiction(this.selected.jurisdiction);
-    this.definitionsService.getCaseTypes(this.selected.jurisdiction.id, READ_ACCESS)
+    this.definitionsService.getCaseTypes(this.selected.jurisdiction.description, this.selected.jurisdiction.id, READ_ACCESS)
     .subscribe(caseTypes => {
       this.selectedJurisdictionCaseTypes = caseTypes;
       this.selectCaseType(this.selectedJurisdictionCaseTypes);

@@ -46,6 +46,12 @@ export class AppConfig {
     return this.config.api_url;
   }
 
+  public setApiUrl(url: string) {
+    this.config.api_url = url + "/aggregated";
+    this.config.case_data_url = url + "/data";
+    this.config.activity_url = url + "/activity";
+  }
+
   public getCaseDataUrl() {
     return this.config.case_data_url;
   }
